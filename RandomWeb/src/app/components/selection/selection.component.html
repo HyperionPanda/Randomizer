@@ -1,0 +1,22 @@
+<div class = "component">
+    <!-- 
+        if button is clicked, input should have hidden removed and 
+        allow user to enter new item
+    -->
+    <button id = "addItem" (click) = "toggleHide()">Add Item</button> <br/>
+    
+    <input id = "newItem" type  = "text"  hidden/>
+
+    <input id = "add" type  = "submit" (click) = "addItemToList()" placeholder="Add" hidden/>
+
+    <br/> <br/>
+    
+    <div class = "container">
+        <label class = "center" for = "currentItems">Current Items</label>
+        <br/>
+        <ol id = "currentItems" class = "left"></ol>
+    </div>
+
+</div>
+
+
