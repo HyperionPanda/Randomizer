@@ -1,0 +1,15 @@
+
+
+<div class = "center grid">
+    @if(itemList){
+        @for(item of itemList; track item){
+            <div class = "individual" id = {{item}}>
+                {{item}}
+            </div>
+        }
+    }
+</div>
+<div class = "center">
+    <button (click) = "randomize()">Random Choice</button>
+</div>
+

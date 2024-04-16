@@ -1,0 +1,12 @@
+.container{
+    margin:auto;
+    background-color:darkolivegreen;
+    border: solid black 3px;
+    width: 500px;
+    height: 100px;
+}
+
+.optionButton{
+    margin-right: 25px;
+    background-color:darkseagreen;
+}

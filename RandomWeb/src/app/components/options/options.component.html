@@ -1,0 +1,8 @@
+<!-- <p>options works!</p> -->
+<div class = "container">
+    @for(option of optionList; track option){
+        <input class = "optionButton" type = "submit" value = "{{option}}" (click) = "chooseOption(option)" />
+    }
+</div>
+
+<!-- <app-basic-random [itemList] = "currentList"></app-basic-random> -->

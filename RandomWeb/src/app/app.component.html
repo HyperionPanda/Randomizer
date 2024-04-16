@@ -1,7 +1,17 @@
 
-<!--for adding components, structure is <app-{name}> </app-{name}>  -->
+    <!--for adding components, structure is <app-{name}> </app-{name}>  -->
+    <!-- (chosenOption)="newChoice($event)" -->
+    <app-options></app-options>
 
-<app-selection></app-selection>
-
-<app-wheel></app-wheel>
-<router-outlet></router-outlet>
+    <app-selection (updatedList)="updateList($event)" [returnedList] = "currentList">
+        
+        <!--
+        @if(currentRandomizer == "Basic"){
+            <div>
+                <app-basic-random [itemList] = "currentList"></app-basic-random>
+            </div>
+        }
+    -->
+    </app-selection>
+    <app-wheel></app-wheel>
+    <router-outlet></router-outlet>

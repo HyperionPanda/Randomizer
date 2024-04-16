@@ -1,4 +1,4 @@
-import { Component, ElementRef } from '@angular/core';
+import { Component, ElementRef, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-selection',
@@ -11,6 +11,11 @@ export class SelectionComponent {
 
   listSize : number = 0;
 
+  @Output() updatedList = new EventEmitter<String>();
+
+  //currently useless?
+  @Input() returnedList : String[] = [];
+
   constructor(private element : ElementRef){}
 
   toggleHide(): void {
@@ -19,22 +24,29 @@ export class SelectionComponent {
     itemSubmit.hidden = !itemSubmit.hidden;
     addButton.hidden = !addButton.hidden;
   }
-
+  
+  //if a new value is added to the list, send updated list to primary app
+  
+  
   addItemToList() : void{
 
     if(this.listSize < 20){
 
-      const itemList = this.element.nativeElement.querySelector('#currentItems');
       const itemValue = this.element.nativeElement.querySelector('#newItem');
       
+      
+      this.listSize++;
+      this.updatedList.emit(itemValue.value);
+      //console.log("This is the returned list "+ this.returnedList);
+      const itemList = this.element.nativeElement.querySelector('#currentItems');
       const addItem = document.createElement('li');
       addItem.textContent = itemValue.value;
-      
+        
       itemList.appendChild(addItem);
-      this.listSize++;
 
     }else{
       alert("Can not add more than 20 items")
     }
   }
+  
 }

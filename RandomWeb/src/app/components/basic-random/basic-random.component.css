@@ -1,0 +1,13 @@
+.center{
+    padding-top: 100px;
+    text-align: center;
+}
+.grid{
+    display : grid;
+    width: auto;
+    height: auto;
+    grid-template-columns: 50% 50%;
+}
+.individual{
+    
+}
