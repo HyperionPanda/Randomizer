@@ -1,4 +1,4 @@
-import { Component, NgModule, Output,EventEmitter } from '@angular/core';
+import { Component, NgModule, Output,EventEmitter, Input } from '@angular/core';
 import { BasicRandomComponent } from '../basic-random/basic-random.component';
 
 @Component({
@@ -10,6 +10,7 @@ import { BasicRandomComponent } from '../basic-random/basic-random.component';
 })
 export class OptionsComponent {
   optionList! : String[];
+  @Input() itemList : String[] = [];
 
   currentOption : String = "";
   @Output() chosenOption = new EventEmitter<String>();
@@ -20,5 +21,6 @@ export class OptionsComponent {
 
   chooseOption(choice : String){
     this.chosenOption.emit(choice);
+    this.currentOption = choice;
   }
 }

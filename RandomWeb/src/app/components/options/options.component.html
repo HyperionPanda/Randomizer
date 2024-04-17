@@ -5,4 +5,8 @@
     }
 </div>
 
-<!-- <app-basic-random [itemList] = "currentList"></app-basic-random> -->
+<!--Change to a switch case at some point -->
+@if(currentOption == "Basic"){
+    <app-basic-random class = "center" [basicList] = "itemList"></app-basic-random>
+}
+

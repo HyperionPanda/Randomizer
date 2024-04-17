@@ -1,7 +1,7 @@
 
     <!--for adding components, structure is <app-{name}> </app-{name}>  -->
     <!-- (chosenOption)="newChoice($event)" -->
-    <app-options></app-options>
+    <app-options [itemList] = "currentList"></app-options>
 
     <app-selection (updatedList)="updateList($event)" [returnedList] = "currentList">
         

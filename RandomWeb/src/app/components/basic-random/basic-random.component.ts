@@ -8,13 +8,28 @@ import { Component, Input } from '@angular/core';
   styleUrl: './basic-random.component.css'
 })
 export class BasicRandomComponent {
-  @Input() itemList: String[];
+  @Input() basicList: String[];
 
-  constructor(){this.itemList = []}
+  constructor(){this.basicList = []}
   
   
 
   randomize(){
-    alert("test");
+
+    const len = this.basicList.length;
+    let previous = -1;
+    let val = -1;
+    let picked;
+    
+    for(let i = 0; i < len; i++){
+        while (previous === val){
+          val = Math.floor(Math.random() * (len))
+        }
+        previous = val;
+        picked = this.basicList[val];
+
+    }
+    
+    alert(picked);
   }
 }
