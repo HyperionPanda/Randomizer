@@ -3,8 +3,10 @@
 <div class = "center grid">
     @if(basicList){
         @for(item of basicList; track item){
-            <div class = "individual" id = {{item}}>
-                {{item}}
+            <div class = "individual">
+                <span class = "innerGrid" id = {{item}}>
+                    {{item}}
+                </span>
             </div>
         }
     }

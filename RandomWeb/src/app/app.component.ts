@@ -16,16 +16,9 @@ import { OptionsComponent } from './components/options/options.component';
 export class AppComponent {
   title = 'RandomWeb';
   currentList : String[] = [];
-  //currentRandomizer : String = "default";
   
   updateList(newValue : String){
     this.currentList.push(newValue);
-    console.log( this.currentList);
-    //console.log(this.currentRandomizer);
   }
-  /*
-  newChoice(newValue : String){
-    this.currentRandomizer = newValue;
-  }
-  */
+  
 }
