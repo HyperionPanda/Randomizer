@@ -6,7 +6,13 @@
 </div>
 
 <!--Change to a switch case at some point -->
-@if(currentOption == "Basic"){
-    <app-basic-random class = "center" [basicList] = "itemList"></app-basic-random>
+
+@switch(currentOption){
+    @case("Basic"){
+        <app-basic-random [basicList] = "itemList"></app-basic-random>
+    }
+    @case("Wheel"){
+        <app-wheel id = "wheel" class = "center" [basicList] = "itemList"></app-wheel>
+    }
 }
 

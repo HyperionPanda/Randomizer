@@ -11,13 +11,12 @@ export class SelectionComponent {
 
   listSize : number = 0;
 
+  //list to be send to the main app component
   @Output() updatedList = new EventEmitter<String>();
-
-  //currently useless?
-  @Input() returnedList : String[] = [];
 
   constructor(private element : ElementRef){}
 
+  //show or hide the new item input
   toggleHide(): void {
     const itemSubmit = this.element.nativeElement.querySelector('#newItem');
     const addButton = this.element.nativeElement.querySelector('#add');
@@ -26,21 +25,20 @@ export class SelectionComponent {
   }
   
   //if a new value is added to the list, send updated list to primary app
-  
-  
   addItemToList() : void{
 
     if(this.listSize < 20){
 
-      const itemValue = this.element.nativeElement.querySelector('#newItem');
-      
+      const item = this.element.nativeElement.querySelector('#newItem');
       
       this.listSize++;
-      this.updatedList.emit(itemValue.value);
-      //console.log("This is the returned list "+ this.returnedList);
+      this.updatedList.emit(item.value);
+      
+      //create the new list item to be added and add it to the DOM
       const itemList = this.element.nativeElement.querySelector('#currentItems');
       const addItem = document.createElement('li');
-      addItem.textContent = itemValue.value;
+      addItem.textContent = item.value;
+      item.value = "";
         
       itemList.appendChild(addItem);
 

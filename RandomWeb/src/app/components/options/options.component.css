@@ -10,3 +10,12 @@
     margin-right: 25px;
     background-color:darkseagreen;
 }
+
+.center{
+    display: flex; 
+    justify-content:center; 
+}
+/* because box-shadow goes beyond border by about 20px, give it 30px of space*/
+#wheel{
+    padding-top: 30px;
+}

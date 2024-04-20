@@ -3,7 +3,7 @@
     <!-- (chosenOption)="newChoice($event)" -->
     <app-options [itemList] = "currentList"></app-options>
 
-    <app-selection (updatedList)="updateList($event)" [returnedList] = "currentList">
+    <app-selection (updatedList)="updateList($event)">
         
         <!--
         @if(currentRandomizer == "Basic"){
@@ -13,5 +13,4 @@
         }
     -->
     </app-selection>
-    <app-wheel></app-wheel>
     <router-outlet></router-outlet>

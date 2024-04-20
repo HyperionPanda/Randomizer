@@ -1,0 +1,75 @@
+.container{
+    position:relative;
+    width: 400px;
+    height: 400px;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+}
+/**
+/* This makes the spin button itself  */
+.container .button{
+    position:absolute;
+    width:60px;
+    height:60px;
+    background:white;
+    border-radius: 50%;
+    z-index:10;
+    display:flex;
+    justify-content: center;
+    cursor:pointer;
+    user-select: none;
+}
+
+/* this makes the tiny triangle found on the top of the spin button */
+/* clip-path Made using Clippy.com */
+
+.container .button::before {
+    content: '';
+    position: absolute;
+    top:-20px;
+    width:20px;
+    height:30px;
+    background: red;
+    clip-path: polygon(50% 0%,15% 100%,85% 100%);
+}
+
+/*creation of the entire circle */
+.container .wheel{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:black;
+    /* below here makes the circle */
+    border-radius: 50%;
+    overflow:hidden;
+    box-shadow: 0 0 0 5px #333,
+                0 0 0 15px #fff,
+                0 0 0 18px #111;
+}
+
+/*creation of the option wedges in the wheel */
+.container .wheel .option{
+    position:absolute;
+    width:50%;
+    height:50%;
+    /* background: var(--clr) */
+    background: yellow;
+    transform-origin: bottom right;
+    transform: rotate(calc(45deg * var(--i)));
+    clip-path: polygon(0 0, 50% 0, 100% 100%, 0 50%);
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    user-select:none;
+    cursor : pointer;
+}
+/* meant to rotate text with the wheel */
+.container .wheel .option span{
+    position:relative;
+    transform:rotate(45deg);
+    font-size: 2em;
+    font-weight:700;
+    color:black;
+    text-shadow: 3px 5px 2px rgba(0,0,0,0.15);
+}
