@@ -46,18 +46,22 @@
     box-shadow: 0 0 0 5px #333,
                 0 0 0 15px #fff,
                 0 0 0 18px #111;
+    /*this makes wheel spin rather than just go straight to answer */
+    transition: transform 5s ease-in-out;
 }
 
 /*creation of the option wedges in the wheel */
+/*This also changes size of wedge based on the number of wedges*/
 .container .wheel .option{
     position:absolute;
     width:50%;
     height:50%;
-    /* background: var(--clr) */
-    background: yellow;
+    background: var(--back-color);
+    /* background: teal; */
     transform-origin: bottom right;
-    transform: rotate(calc(45deg * var(--i)));
-    clip-path: polygon(0 0, 50% 0, 100% 100%, 0 50%);
+    transform: rotate(calc(45deg * var(--position))); 
+    /*change the 59% on both to change fill size */
+    clip-path: polygon(0 0, 59% 0, 100% 100%, 0 59%);
     display:flex;
     justify-content: center;
     align-items: center;
@@ -67,7 +71,7 @@
 /* meant to rotate text with the wheel */
 .container .wheel .option span{
     position:relative;
-    transform:rotate(45deg);
+    transform:rotate(180deg);
     font-size: 2em;
     font-weight:700;
     color:black;

@@ -13,4 +13,11 @@ export class WheelComponent {
 
   constructor(private el : ElementRef, private renderer : Renderer2){this.basicList = []}
 
+  spinWheel(){
+    let wheel = this.el.nativeElement.querySelector(".wheel");
+    let spinRandomValue = Math.ceil(Math.random() * 3600);
+    console.log("spin");
+    this.renderer.setStyle(wheel,"transform","rotate(" + spinRandomValue + "deg)");
+  }
+
 }
