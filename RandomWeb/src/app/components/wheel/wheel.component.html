@@ -3,14 +3,9 @@
 <div class = "container">
     <div class = "button" (click) ="spinWheel()"></div>
     <div class = "wheel">
-        <div class = "option" style = "--position:1; --back-color: #db7093;"><span>1</span></div>
-        <div class = "option" style = "--position:2; --back-color: red;"><span>2</span></div>
-        <div class = "option" style = "--position:3; --back-color: yellow;"><span>3</span></div>
-        <div class = "option" style = "--position:4; --back-color: green;"><span>4</span></div>
-        <div class = "option" style = "--position:5; --back-color: purple;"><span>5</span></div>
-        <div class = "option" style = "--position:6; --back-color: orange;"><span>6</span></div>
-        <div class = "option" style = "--position:7; --back-color: teal;"><span>7</span></div>
-        <div class = "option" style = "--position:8; --back-color: gray;"><span>8</span></div>
-        
+        @for(option of basicList; let i = $index; track option){
+            <!--  --back-color: {{colorPick()}}" -->
+            <div class = "option" style = "--position: {{i+1}}; --back-color: {{colors[i]}}" ><span>{{option}}</span></div>
+        }
     </div>
 </div>
