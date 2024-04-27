@@ -41,7 +41,8 @@
     position:absolute;
     width:100%;
     height:100%;
-    background:black;
+    /* background:black; */
+    background: repeating-conic-gradient( from 0deg, black 0deg 50deg);
     /* below here makes the circle */
     border-radius: 50%;
     overflow:hidden;
@@ -58,24 +59,18 @@
     position:absolute;
     width:50%;
     height:50%;
-    background: var(--back-color);
+    /* background: var(--back-color); */
     transform-origin: bottom right;
-    /*
-    where share is the number of degrees each wedge takes and i is the position
-    rotate = (i * share)deg skeyY = (share - 90)deg i++
-    transform: rotate(0deg) skewY(30deg)
-    */
-    /* transform: rotate(calc(var(--position) * calc(360deg / var(--total-size)))) skewY(calc(360deg / var(--total-size)) - 90deg); */
-    /* the 45deg determines number of items since 360deg / 8 items is 45deg each   */
-    /* transform: rotate(calc(45deg * var(--position))); */
+    
     transform: rotate(calc(calc(360deg / var(--total-size)) * var(--position))); 
      
     /* transform: rotate(calc(310deg - calc(var(--ptest) * 45deg))); */
     /*change the 59% on both to change fill size */
     /* clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); */
-    clip-path: polygon(0 0, 59% 0, 100% 100%, 0 59%);
+    /* clip-path: polygon(0 0, 59% 0, 100% 100%, 0 59%); */
     display:flex;
-    justify-content: center;
+    /* justify-content: center; */
+    justify-content: right;
     align-items: center;
     user-select:none;
     cursor : pointer;
@@ -89,4 +84,7 @@
     font-weight:700;
     color:black;
     text-shadow: 3px 5px 2px rgba(0,0,0,0.15);
+    margin-bottom: 45%;
+    margin-right: 5%;
+    
 }
