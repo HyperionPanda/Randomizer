@@ -39,7 +39,11 @@ export class WheelComponent{
     this.renderer.setStyle(wheel,"background",styleString);
   }
 
-  spinWheel(){
+  delay(seconds: number) {
+    return new Promise( resolve => setTimeout(resolve, seconds*1000) );
+  }
+
+  async spinWheel(){
 
     let wheel = this.el.nativeElement.querySelector(".wheel");
     let winner = this.el.nativeElement.querySelector(".winner");
@@ -65,18 +69,8 @@ export class WheelComponent{
 
       }
     }
-    
-    this.renderer.setProperty(winner,"textContent",win);
+    await this.delay(5);
+    this.renderer.setProperty(winner,"textContent","Winner: "+win);
 
   }
-  /*
-  colorPick(): String{
-    let len = this.colors.length;
-    let val = Math.floor(Math.random() * (len));
-    const end = this.colors[val];
-    this.colors.splice(val,1);
-    console.log(this.colors);
-    return end;
-  }
-  */
 }
