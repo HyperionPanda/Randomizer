@@ -1,4 +1,5 @@
 import { Component, ElementRef, Input, Renderer2 } from '@angular/core';
+import { TimeHandlerService } from '../../services/time-handler.service';
 
 @Component({
   selector: 'app-basic-random',
@@ -9,6 +10,7 @@ import { Component, ElementRef, Input, Renderer2 } from '@angular/core';
 })
 export class BasicRandomComponent {
   @Input() basicList: String[];
+  timeHandler: TimeHandlerService = new TimeHandlerService();
 
   constructor(private el : ElementRef, private renderer : Renderer2){this.basicList = []}
 
@@ -38,7 +40,7 @@ export class BasicRandomComponent {
         element = this.el.nativeElement.querySelector("#"+picked);
         this.renderer.setStyle(element, 'background', 'yellow');
 
-        await this.delay(2);
+        await this.timeHandler.delay(2);
 
         this.renderer.setStyle(element, 'background', 'none');
     }

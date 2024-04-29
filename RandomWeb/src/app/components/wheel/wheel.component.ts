@@ -1,5 +1,6 @@
 import { Component, ElementRef, Renderer2, Input} from '@angular/core';
 import { ReloadDirective } from '../../directives/reload.directive';
+import { TimeHandlerService } from '../../services/time-handler.service';
 
 @Component({
   selector: 'app-wheel',
@@ -13,6 +14,7 @@ export class WheelComponent{
   @Input() basicList: String[];
   colors : String[];
   counter: number;
+  timeHandler: TimeHandlerService = new TimeHandlerService();
 
   constructor(private el : ElementRef, private renderer : Renderer2){this.basicList = []; this.counter = this.basicList.length;
    this.colors = ["blue","red","orange","yellow","pink","teal",
@@ -37,10 +39,6 @@ export class WheelComponent{
     styleString += ")";
     console.log(styleString);
     this.renderer.setStyle(wheel,"background",styleString);
-  }
-
-  delay(seconds: number) {
-    return new Promise( resolve => setTimeout(resolve, seconds*1000) );
   }
 
   async spinWheel(){
@@ -69,7 +67,7 @@ export class WheelComponent{
 
       }
     }
-    await this.delay(5);
+    await this.timeHandler.delay(5);
     this.renderer.setProperty(winner,"textContent","Winner: "+win);
 
   }
