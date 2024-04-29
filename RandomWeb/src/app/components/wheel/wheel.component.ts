@@ -25,8 +25,7 @@ export class WheelComponent{
     let wheel = this.el.nativeElement.querySelector(".wheel");
     let styleString = "repeating-conic-gradient( from 0deg";
     // at 17 there are some issues, maybe try floor?
-    let perWedge = Math.ceil(360/this.basicList.length);
-    console.log(perWedge);
+    let perWedge = Math.floor(360/this.basicList.length);
 
     let initialDEG = 0;
     let maxDEG = perWedge;
@@ -41,10 +40,34 @@ export class WheelComponent{
   }
 
   spinWheel(){
+
     let wheel = this.el.nativeElement.querySelector(".wheel");
+    let winner = this.el.nativeElement.querySelector(".winner");
     let spinRandomValue = Math.ceil(Math.random() * 3600);
-    console.log("spin");
     this.renderer.setStyle(wheel,"transform","rotate(" + spinRandomValue + "deg)");
+
+    let winValue = 360 - spinRandomValue%360;
+    let win = this.basicList[this.basicList.length-1];
+    let current = 0;
+    let past = 0;
+    const perWedge = Math.floor(360/this.basicList.length);
+    
+    for (let i = 0; i < this.basicList.length; i++){
+      
+      if(current >= winValue && past <= winValue){
+  
+        win = ""+this.basicList[i-1];
+        break;
+
+      }else{
+        past = current;
+        current += perWedge;
+
+      }
+    }
+    
+    this.renderer.setProperty(winner,"textContent",win);
+
   }
   /*
   colorPick(): String{
