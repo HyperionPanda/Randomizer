@@ -14,12 +14,6 @@ export class BasicRandomComponent {
 
   constructor(private el : ElementRef, private renderer : Renderer2){this.basicList = []}
 
-  //wait for the given time then continue, times by 1000 to turn into miliseconds
-  delay(seconds: number) {
-    return new Promise( resolve => setTimeout(resolve, seconds*1000) );
-  }
-  
-  
   //based on the length of the item list, pick a random item. Make sure each new item is different than the one before it.
   async randomize(){
 
