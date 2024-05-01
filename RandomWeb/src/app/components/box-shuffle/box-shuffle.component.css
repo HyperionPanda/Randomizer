@@ -2,11 +2,16 @@
     position:relative;
     width: 400px;
     height: 400px;
+
+    background:transparent;
+    border: none !important;
+    
     display:flex;
     flex-direction: column;
     justify-content: center;
     align-items:center;
     padding-top: 7px;
+    transition: transform .5s ease-in-out; 
 }
 
 .container #papers1 {
