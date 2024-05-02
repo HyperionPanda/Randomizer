@@ -13,6 +13,14 @@
     padding-top: 7px;
     transition: transform .5s ease-in-out; 
 }
+.center{
+    position:relative;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    padding-top: 7px;
+}
 
 .container #papers1 {
     width:25%;

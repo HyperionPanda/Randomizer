@@ -13,12 +13,14 @@ export class BoxShuffleComponent {
 
   @Input() basicList: String[];
   timeHandler: TimeHandlerService = new TimeHandlerService();
-  previousWinner: number = 21;
+  previousWinner: number;
   currentWinner: String = "";
 
-  constructor(private el : ElementRef, private renderer : Renderer2){this.basicList = [];}
+  constructor(private el : ElementRef, private renderer : Renderer2){this.basicList = []; this.previousWinner = 21;}
   
   randomPick(){
+    const pickButton = this.el.nativeElement.querySelector(".center");
+
 
     let len = this.basicList.length;
 
@@ -37,13 +39,19 @@ export class BoxShuffleComponent {
           return val;
         }
       }
-      return val;
     }
+  }
+
+  finalPick(){
+    alert(this.currentWinner);
   }
     
 
   async shuffle(){
     const wholeBox = this.el.nativeElement.querySelector(".container");
+
+    const pickButton = this.el.nativeElement.querySelector(".center");
+    this.renderer.setStyle(pickButton,"display","none");
     //translate(tx,ty)
     for(let i = 0; i < 2; i++){
 
@@ -68,6 +76,7 @@ export class BoxShuffleComponent {
     this.renderer.setStyle(wholeBox,"transform","translate(0px)");
 
     this.currentWinner = this.basicList[this.randomPick()];
+    this.renderer.setStyle(pickButton,"display","flex");
     
     
   }
