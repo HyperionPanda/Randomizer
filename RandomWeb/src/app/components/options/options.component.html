@@ -10,11 +10,14 @@
 @switch(currentOption){
     @case("Basic"){
         <app-basic-random [basicList] = "itemList"></app-basic-random>
+        <p class = "description center"> Basic sorting that picks a random option</p>
     }
     @case("Wheel"){
         <app-wheel id = "wheel" class = "center" [basicList] = "itemList"></app-wheel>
+        <p class = "description center"> Sorting wheel that chooses a rotation rather than an option and lands on one of the choices</p>
     }@case("Box"){
         <app-box-shuffle id = "box" class = "center" [basicList] = "itemList"></app-box-shuffle>
+        <p class = "description center">Box picks a new option every time its clicked. Randomize it as much as you want then select pick to get a winner</p>
     }
 }
 
