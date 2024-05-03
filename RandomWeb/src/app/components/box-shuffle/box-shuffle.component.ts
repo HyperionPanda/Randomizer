@@ -46,36 +46,36 @@ export class BoxShuffleComponent {
     alert(this.currentWinner);
   }
     
+  async delayPattern(element: ElementRef,changeType: String,changeValue : number,changeValueType: String, numberOfRepeat : number){
+
+    for(let i = 0; i < numberOfRepeat; i++){
+      this.renderer.setStyle(element,"transform",changeType+"("+changeValue+""+changeValueType+")");
+      await this.timeHandler.delay(.5);
+      this.renderer.setStyle(element,"transform",changeType+"(-"+changeValue+""+changeValueType+")");
+      await this.timeHandler.delay(.5);
+      console.log("transform",changeType+"(-"+changeValue+""+changeValueType+")");
+    }
+    
+    this.renderer.setStyle(element,"transform",changeType+"(0"+changeValueType+")");
+    await this.timeHandler.delay(.75);
+  }
 
   async shuffle(){
+
     const wholeBox = this.el.nativeElement.querySelector(".container");
-
     const pickButton = this.el.nativeElement.querySelector(".center");
+
+    //Hide pick button to avoid collision
     this.renderer.setStyle(pickButton,"display","none");
-    //translate(tx,ty)
-    for(let i = 0; i < 2; i++){
+   
+    //call delayPattern and wait for it to finish the psuedo-animation
+    await this.delayPattern(wholeBox,"rotate",45,"deg",2);
+    await this.delayPattern(wholeBox,"translate",150,"px",2);
 
-      this.renderer.setStyle(wholeBox,"transform","rotate(45deg)");
-      await this.timeHandler.delay(.5);
-      this.renderer.setStyle(wholeBox,"transform","rotate(-45deg)");
-      await this.timeHandler.delay(.5);
-      
-    }
-
-    this.renderer.setStyle(wholeBox,"transform","rotate(0deg)");
-    await this.timeHandler.delay(.75);
-
-    for(let i = 0; i < 2; i++){
-
-      this.renderer.setStyle(wholeBox,"transform","translate(150px)");
-      await this.timeHandler.delay(.5);
-      this.renderer.setStyle(wholeBox,"transform","translate(-150px)");
-      await this.timeHandler.delay(.5);  
-      
-    }
-    this.renderer.setStyle(wholeBox,"transform","translate(0px)");
-
+    //pick a winner
     this.currentWinner = this.basicList[this.randomPick()];
+
+    //allow pick button to  be pressed
     this.renderer.setStyle(pickButton,"display","flex");
     
     
