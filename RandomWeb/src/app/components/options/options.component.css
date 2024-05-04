@@ -4,6 +4,28 @@
     border: solid black 3px;
     width: 500px;
     height: 100px;
+    
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    border-radius: 20px;
+    
+}
+
+.center{
+    width: 60%;
+    height: 80%;
+    padding-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-auto-rows: 25px 20px;
+    grid-gap: 10px;
+    
+}
+.centered{
+    display: flex;
+    justify-content: center;
+    
 }
 
 .optionButton{
@@ -11,11 +33,7 @@
     background-color:darkseagreen;
 }
 
-.center{
-    display: flex; 
-    justify-content:center; 
-}
 /* because box-shadow goes beyond border by about 20px, give it 30px of space*/
 #wheel{
-    padding-top: 30px;
+    padding-top: 50px;
 }
