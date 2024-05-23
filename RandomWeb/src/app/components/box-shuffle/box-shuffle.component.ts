@@ -42,8 +42,15 @@ export class BoxShuffleComponent {
     }
   }
 
-  finalPick(){
-    alert(this.currentWinner);
+  async finalPick(){
+    const wholeBox = this.el.nativeElement.querySelector(".container");
+    const answerPaper = this.el.nativeElement.querySelector("#papers3");
+
+    this.renderer.setStyle(wholeBox,"transform","translateY(130px)");
+    await this.timeHandler.delay(.5);
+    this.renderer.setStyle(answerPaper,"transform","translateY(-210px)");
+    //await this.timeHandler.delay(1);
+    //alert(this.currentWinner);
   }
     
   async delayPattern(element: ElementRef,changeType: String,changeValue : number,changeValueType: String, numberOfRepeat : number){
@@ -64,6 +71,9 @@ export class BoxShuffleComponent {
 
     const wholeBox = this.el.nativeElement.querySelector(".container");
     const pickButton = this.el.nativeElement.querySelector(".center");
+    const answerPaper = this.el.nativeElement.querySelector("#papers3");
+
+    this.renderer.removeStyle(answerPaper,"transform");
 
     //Hide pick button to avoid collision
     this.renderer.setStyle(pickButton,"display","none");

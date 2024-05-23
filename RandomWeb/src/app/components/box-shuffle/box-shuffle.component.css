@@ -41,6 +41,19 @@
     transform:rotate(5deg);
     background: white;
 }
+.container #papers3 {
+    width:25%;
+    height:30%;
+    position: absolute;
+    top:100px;
+    background: white;
+    z-index: 1;
+   text-align: center;
+}
+.container #papers3 #answer {
+    align-items: center;
+    color:black;
+}
 
 .container #box {
     width:75%;
