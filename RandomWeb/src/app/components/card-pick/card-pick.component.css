@@ -1,0 +1,23 @@
+#container{
+    position:relative;
+    
+    width: 800px;
+    height: 400px;
+
+    background:transparent;
+    border: none !important;
+    
+    display:grid;
+    grid-template-columns: repeat(6, 1fr);
+    row-gap: 20px;
+    column-gap: 20px;
+    grid-gap: 25px 25px;
+    text-align: center;
+    padding-top: 7px;
+    
+}
+
+.card{
+    width: 100px;
+    height: 150px;
+}
