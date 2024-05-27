@@ -15,4 +15,8 @@ export class CardPickComponent {
 
   constructor(private el : ElementRef, private renderer : Renderer2){this.basicList = [];}
 
+  selectCard(){
+    alert();
+  }
+
 }
