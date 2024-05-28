@@ -1,6 +1,6 @@
 <div id = "container">
     <!-- For annotation that creates a card for each number of items-->
-    @for(option of basicList; track option){
-        <div class = "card" (click) = "selectCard()"></div>
+    @for(option of basicList; let i = $index; track option){
+        <div class = "card" id = b{{i}} (click) = "selectCard(i)"></div>
     }
 </div>
