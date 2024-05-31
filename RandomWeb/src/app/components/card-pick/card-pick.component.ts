@@ -1,7 +1,6 @@
 import { Component, Input,ElementRef, Renderer2 } from '@angular/core';
 import { TimeHandlerService } from '../../services/time-handler.service';
 
-
 @Component({
   selector: 'app-cardpick',
   standalone: true,
@@ -15,20 +14,42 @@ export class CardPickComponent {
 
   selectedList : String[];
 
-  constructor(private el : ElementRef, private renderer : Renderer2){this.basicList = []; this.selectedList = [];}
+  constructor(private el : ElementRef, private renderer : Renderer2, private timeHandler: TimeHandlerService){this.basicList = []; this.selectedList = [];}
 
-  selectCard(id : Number){
+  selectCard(id : String){
   
-    const element = this.el.nativeElement.querySelector("#b"+id);
+    const element = this.el.nativeElement.querySelector("#b-"+id);
     
-    if(this.selectedList.includes(element)){
-      this.renderer.setStyle(element,"border","none");
-      this.selectedList.splice(this.selectedList.indexOf(element),1);
+    //if card selected, unselect it. Else if card unselected, select it
+    if(this.selectedList.includes(element.id)){
+
+      this.selectedList.splice(this.selectedList.indexOf(element.id),1);
+      this.renderer.setAttribute(element,"class","card unselected")
+
     }else{
-      this.renderer.setStyle(element,"border","10px solid yellow");
-      this.selectedList.push(element);
+
+      this.renderer.setAttribute(element,"class","card selected")
+      this.selectedList.push(element.id);
+
     }
 
   }
 
+  async finalSelection(){
+
+    console.log(this.selectedList);
+
+    for(let i = 0; i < this.basicList.length; i++){
+      const element = this.el.nativeElement.querySelector("#b-"+this.basicList[i]);
+      if(this.selectedList.includes("b-"+this.basicList[i])){
+        console.log(this.basicList[i]+" stays");
+        //this.renderer.setAttribute(element,"class","card unselected");
+      }else{
+        this.renderer.setAttribute(element,"class","card unselected removeUnselected");
+        await this.timeHandler.delay(2);
+        this.renderer.setStyle(element, "display","none");
+      }
+      
+    }
+  }
 }

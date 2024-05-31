@@ -27,3 +27,13 @@
 
     /* border: solid yellow 10px; */
 }
+.unselected{
+    border: none;
+}
+.selected{
+    border: 10px solid yellow;
+}
+.removeUnselected{
+    transition: transform 1s ease-in-out;
+    transform:translateY(-100px);
+}
