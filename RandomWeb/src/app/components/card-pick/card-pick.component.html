@@ -2,6 +2,6 @@
     <button (click) = "finalSelection()">Finished</button>
     <!-- For annotation that creates a card for each number of items-->
     @for(option of basicList; let i = $index; track option){
-        <div class = "card unselected" id = b-{{option}} (click) = "selectCard(option)"></div>
+        <div class = "card unselected" id = b-{{option}} (click) = "selectCard(option)"><span id = "v-b-{{option}}" class = "cardValue" hidden>{{option}}</span></div>
     }
 </div>

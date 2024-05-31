@@ -37,8 +37,7 @@ export class CardPickComponent {
 
   async finalSelection(){
 
-    console.log(this.selectedList);
-
+  
     for(let i = 0; i < this.basicList.length; i++){
       const element = this.el.nativeElement.querySelector("#b-"+this.basicList[i]);
       if(this.selectedList.includes("b-"+this.basicList[i])){
@@ -51,5 +50,15 @@ export class CardPickComponent {
       }
       
     }
+    if(this.selectedList.length <= 1){
+      this.flip();
+    }
+  }
+  flip(){
+    const element = this.el.nativeElement.querySelector("#"+this.selectedList[0]);
+    const cardValue = this.el.nativeElement.querySelector("#v-"+this.selectedList[0]);
+    console.log("#v-"+this.selectedList[0]);
+    this.renderer.setAttribute(element,"class","flip");
+    this.renderer.removeAttribute(cardValue,"hidden");
   }
 }
