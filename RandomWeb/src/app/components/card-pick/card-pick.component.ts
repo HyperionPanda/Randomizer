@@ -22,14 +22,34 @@ export class CardPickComponent implements OnInit{
 
   ngOnInit(): void {
       this.determineSelectionAmount();
+      this.randomizeCards();
+  }
+
+  randomizeCards(){
+    //fisher-yates shuffle
+    let currentIndex = this.basicList.length;
+    
+      // While there remain elements to shuffle...
+    while (currentIndex != 0) {
+    
+        // Pick a remaining element...
+      let randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+    
+        // And swap it with the current element.
+      [this.basicList[currentIndex], this.basicList[randomIndex]] = [
+        this.basicList[randomIndex], this.basicList[currentIndex]];
+    }
+    
+
   }
 
   determineSelectionAmount(): void {
-
+    //if there is only one card
     if(this.selectedList.length == 1){
       this.lastCard = this.selectedList[0];
     }
-
+  
     if (this.selectedList.length <= 0 && this.basicList.length > 1){
         this.selectAmount = this.basicList.length-1;
     }else if(this.basicList.length == 1){
@@ -54,7 +74,7 @@ export class CardPickComponent implements OnInit{
       this.determineSelectionAmount();
     }
 
-      const element = this.el.nativeElement.querySelector("#b-"+id);
+      const element = this.el.nativeElement.querySelector("#"+id);
       
       //if card selected, unselect it. Else if card unselected, select it
       if(this.selectedList.includes(element.id)){
@@ -73,23 +93,25 @@ export class CardPickComponent implements OnInit{
 
   async finalSelection(){
     // get rid of all cards that are unselected
-    for(let i = 0; i < this.basicList.length; i++){
+    for(let i = this.basicList.length - 1; i >= 0; i--){
 
-      const element = this.el.nativeElement.querySelector("#b-"+this.basicList[i]);
+      const element = this.el.nativeElement.querySelector("#"+this.basicList[i]);
 
-      if(this.selectedList.includes("b-"+this.basicList[i])){
+      if(this.selectedList.includes(this.basicList[i])){
         console.log(this.basicList[i]+" stays");
       }else{
 
         this.renderer.setAttribute(element,"class","card unselected removeUnselected");
         await this.timeHandler.delay(2);
         this.renderer.setStyle(element, "display","none");
+        console.log(this.basicList[i]+" is removed")
+        this.basicList.splice(this.basicList.indexOf(element.id),1);
       }
       
     }
 
     this.determineSelectionAmount();
-
+    
     //unselect all selected cards after card removal
     for(let j = 0; j < this.selectedList.length; j++){
       const selectedElement = this.el.nativeElement.querySelector("#"+this.selectedList[j]);
@@ -97,16 +119,17 @@ export class CardPickComponent implements OnInit{
       this.renderer.setAttribute(selectedElement,"class","card unselected")
     }
     this.selectedList = [];
-    
+
     if(this.lastCard != ""){
       this.flip();
     }
   }
   //flips last remaining card
   flip(){
+    
     const element = this.el.nativeElement.querySelector("#"+this.lastCard);
     const cardValue = this.el.nativeElement.querySelector("#v-"+this.lastCard);
-  
+    
     this.renderer.setAttribute(element,"class","flip");
     this.renderer.removeAttribute(cardValue,"hidden");
   }
