@@ -17,11 +17,13 @@ export class WheelComponent{
   timeHandler: TimeHandlerService = new TimeHandlerService();
 
   constructor(private el : ElementRef, private renderer : Renderer2){this.basicList = []; this.counter = this.basicList.length;
+  //all possible colors in order for the wedges
    this.colors = ["blue","red","orange","yellow","pink","teal",
    "green","deepskyblue","darkslategrey","crimson","burlywood",
    "magenta","crimson","fuchsia","lightblue","mediumspringgreen",
    "midnightblue","aqua","aquamarine","maroon"]}
 
+  //changes wheel based on the number of elements and gives each element their color
   recolorWheel(){
     this.counter = this.basicList.length;
     let wheel = this.el.nativeElement.querySelector(".wheel");
@@ -41,6 +43,7 @@ export class WheelComponent{
     this.renderer.setStyle(wheel,"background",styleString);
   }
 
+  //spins the wheel and determines which wedge will be the winner
   async spinWheel(){
 
     let wheel = this.el.nativeElement.querySelector(".wheel");

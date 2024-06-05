@@ -18,6 +18,7 @@ export class BoxShuffleComponent {
 
   constructor(private el : ElementRef, private renderer : Renderer2){this.basicList = []; this.previousWinner = 21;}
   
+  //program for determining which element is picked
   randomPick(){
     const pickButton = this.el.nativeElement.querySelector(".center");
 

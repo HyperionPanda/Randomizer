@@ -20,6 +20,7 @@ export class CardPickComponent implements OnInit{
 
   constructor(private el : ElementRef, private renderer : Renderer2, private timeHandler: TimeHandlerService){this.basicList = []; this.selectedList = [];}
 
+  //figure out how many cards to allow to be selected and then randomize those cards
   ngOnInit(): void {
       this.determineSelectionAmount();
       this.randomizeCards();
@@ -44,14 +45,17 @@ export class CardPickComponent implements OnInit{
 
   }
 
+  //determines the number of cards that can be selected based on how many cards are left
   determineSelectionAmount(): void {
+
     //if there is only one card
     if(this.selectedList.length == 1){
       this.lastCard = this.selectedList[0];
     }
-  
+    //before any cards have been removed
     if (this.selectedList.length <= 0 && this.basicList.length > 1){
         this.selectAmount = this.basicList.length-1;
+
     }else if(this.basicList.length == 1){
         this.selectAmount = 1;
     }else{
@@ -68,6 +72,7 @@ export class CardPickComponent implements OnInit{
       
   }
 
+  //allows a card to be selected/unselected
   selectCard(id : String){
 
     if(this.selectAmount == 1){
@@ -91,6 +96,7 @@ export class CardPickComponent implements OnInit{
     
   }
 
+  //play animation and get rid of cards that are unselected
   async finalSelection(){
     // get rid of all cards that are unselected
     for(let i = this.basicList.length - 1; i >= 0; i--){
