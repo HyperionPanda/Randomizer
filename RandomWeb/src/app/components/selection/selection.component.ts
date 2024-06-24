@@ -27,7 +27,7 @@ export class SelectionComponent {
   //if a new value is added to the list, send updated list to primary app
   addItemToList() : void{
 
-    if(this.listSize < 20){
+    if(this.listSize < 15){
 
       const item = this.element.nativeElement.querySelector('#newItem');
       
@@ -43,7 +43,7 @@ export class SelectionComponent {
       itemList.appendChild(addItem);
 
     }else{
-      alert("Can not add more than 20 items")
+      alert("Can not add more than 15 items")
     }
   }
   

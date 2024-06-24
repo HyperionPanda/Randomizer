@@ -1,7 +1,9 @@
-<div id = "container">
-    <button (click) = "finalSelection()">Finished</button>
-    <!-- For annotation that creates a card for each number of items-->
-    @for(option of basicList; let i = $index; track option){
-        <div class = "card unselected" id = {{option}} (click) = "selectCard(option)"><span id = "v-{{option}}" class = "cardValue" hidden>{{option}}</span></div>
-    }
+<div id = "element">
+    <div id = "container">
+        <!-- For annotation that creates a card for each number of items-->
+        @for(option of basicList; let i = $index; track option){
+            <div class = "card unselected" id = {{option}} (click) = "selectCard(option)"><span id = "v-{{option}}" class = "cardValue" hidden>{{option}}</span></div>
+        }
+    </div>
+    <button id = "finish" (click) = "finalSelection()">Finished</button>
 </div>

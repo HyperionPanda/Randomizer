@@ -1,8 +1,13 @@
+#element{
+    display:flex;
+    flex-direction: column;
+
+}
 #container{
     position:relative;
     
     width: 800px;
-    height: 400px;
+    height: 500px;
 
     background:transparent;
     border: none !important;

@@ -18,7 +18,7 @@ export class BoxShuffleComponent {
 
   constructor(private el : ElementRef, private renderer : Renderer2){this.basicList = []; this.previousWinner = 21;}
   
-  //program for determining which element is picked
+  //program for determining which element is selected
   randomPick(){
     const pickButton = this.el.nativeElement.querySelector(".center");
 
@@ -32,7 +32,7 @@ export class BoxShuffleComponent {
         this.previousWinner = val;
         return val;
       }else{
-
+        //so long as the previous winner is not the current winner, allow the new winner
         if(this.previousWinner != val){
           console.log("previous = "+this.previousWinner)
           console.log("current = "+val)
@@ -43,6 +43,7 @@ export class BoxShuffleComponent {
     }
   }
 
+  //animation for the final winner
   async finalPick(){
     const wholeBox = this.el.nativeElement.querySelector(".container");
     const answerPaper = this.el.nativeElement.querySelector("#papers3");
@@ -53,7 +54,8 @@ export class BoxShuffleComponent {
     //await this.timeHandler.delay(1);
     //alert(this.currentWinner);
   }
-    
+  
+  //animation for shuffling the box
   async delayPattern(element: ElementRef,changeType: String,changeValue : number,changeValueType: String, numberOfRepeat : number){
 
     for(let i = 0; i < numberOfRepeat; i++){
