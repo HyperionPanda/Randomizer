@@ -5,7 +5,7 @@
     -->
     <button id = "addItem" (click) = "toggleHide()">Add Item</button> <br/>
     
-    <input id = "newItem" type  = "text"  hidden/>
+    <input id = "newItem" type  = "text"  hidden (keyup.enter) = "addItemToList()">
     <!-- (click) = "addItemToList()" -->
     <input id = "add" type  = "submit" (click) = "addItemToList()" placeholder="Add" hidden/>
 

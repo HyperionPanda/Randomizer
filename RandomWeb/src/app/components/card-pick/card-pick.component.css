@@ -25,7 +25,7 @@
 .card{
     width: 100px;
     height: 150px;
-    background-image: url("../../../assets/images/blue-28.jpg");
+    background-image: url("/assets/images/blue-28.jpg");
     background-size: 100px 150px;
     border-radius: 10px;
     cursor: pointer;

@@ -22,8 +22,8 @@ export class CardPickComponent implements OnInit{
 
   //figure out how many cards to allow to be selected and then randomize those cards
   ngOnInit(): void {
-      this.determineSelectionAmount();
-      this.randomizeCards();
+    this.determineSelectionAmount();
+    this.randomizeCards();
   }
 
   randomizeCards(){

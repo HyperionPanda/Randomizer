@@ -14,7 +14,9 @@ export class SelectionComponent {
   //list to be send to the main app component
   @Output() updatedList = new EventEmitter<String>();
 
-  constructor(private element : ElementRef){}
+  constructor(private element : ElementRef){
+  
+  }
 
   //show or hide the new item input
   toggleHide(): void {
@@ -30,6 +32,10 @@ export class SelectionComponent {
     if(this.listSize < 15){
 
       const item = this.element.nativeElement.querySelector('#newItem');
+
+      if (item.value == ""){
+        return;
+      }
       
       this.listSize++;
       this.updatedList.emit(item.value);
